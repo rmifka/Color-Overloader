@@ -1,0 +1,72 @@
+<div class="flex flex-col">
+    <div class="flex flex-row -mt-8">
+        <button (click)="clickedColorEditSlot(colorScheme.saberAColor)" class="px-2 py-4 m-2 text-white rounded-md"
+            [style.backgroundColor]="formatColor(colorScheme.saberAColor)">Left Saber Color</button>
+        <button (click)="clickedColorEditSlot(colorScheme.saberBColor)" class="px-2 py-4 m-2 text-white rounded-md"
+            [style.backgroundColor]="formatColor(colorScheme.saberBColor)">Right Saber Color</button>
+        <button (click)="clickedColorEditSlot(colorScheme.environmentColor0)"
+            class="px-2 py-4 m-2 text-white rounded-md"
+            [style.backgroundColor]="formatColor(colorScheme.environmentColor0)">Environment Color 1</button>
+        <button (click)="clickedColorEditSlot(colorScheme.environmentColor1)"
+            class="px-2 py-4 m-2 text-white rounded-md"
+            [style.backgroundColor]="formatColor(colorScheme.environmentColor1)">Environment Color 2</button>
+        <button (click)="clickedColorEditSlot(colorScheme.obstaclesColor)" class="px-2 py-4 m-2 text-white rounded-md"
+            [style.backgroundColor]="formatColor(colorScheme.obstaclesColor)">Obstacle Color</button>
+        <button (click)="clickedColorEditSlot(colorScheme.environmentColor0Boost)"
+            class="px-2 py-4 m-2 text-white rounded-md"
+            [style.backgroundColor]="formatColor(colorScheme.environmentColor0Boost)">Environment Color Boost 1</button>
+        <button (click)="clickedColorEditSlot(colorScheme.environmentColor1Boost)"
+            class="px-2 py-4 m-2 text-white rounded-md"
+            [style.backgroundColor]="formatColor(colorScheme.environmentColor1Boost)">Environment Color Boost 2</button>
+    </div>
+
+    <div class="flex flex-row">
+        <div class="flex flex-col mx-4">
+            <div class="flex flex-col items-center justify-between mt-8 h-52">
+                <div class="flex items-center">
+                    <span class="mr-2">R:</span>
+                    <input class="w-[60rem]" type="range" min="0" [max]="maxSliderLimits" [value]="selectedSlot.r * 255"
+                        (input)="onColorSliderChange($event,'red')">
+                    <span class="ml-2">{{ selectedSlot.r * 255 | number }}</span>
+                    <span class="ml-1"> / {{maxSliderLimits}}</span>
+                </div>
+                <div class="flex items-center">
+                    <span class="mr-2">G:</span>
+                    <input class="w-[60rem]" type="range" min="0" [max]="maxSliderLimits" [value]="selectedSlot.g * 255"
+                        (input)="onColorSliderChange($event,'green')">
+                    <span class="ml-2">{{ selectedSlot.g * 255 | number }}</span>
+                    <span class="ml-1"> / {{maxSliderLimits}}</span>
+                </div>
+                <div class="flex items-center">
+                    <span class="mr-2">B:</span>
+                    <input class="w-[60rem]" type="range" min="0" [max]="maxSliderLimits" [value]="selectedSlot.b * 255"
+                        (input)="onColorSliderChange($event,'blue')">
+                    <span class="ml-2">{{ selectedSlot.b * 255 | number }}</span>
+                    <span class="ml-1"> / {{maxSliderLimits}}</span>
+                </div>
+                <div class="flex items-center">
+                    <span class="mr-2">A:</span>
+                    <input class="w-[60rem]" type="range" min="0" [max]="maxSliderLimits" [value]="selectedSlot.a * 255"
+                        (input)="onColorSliderChange($event,'alpha')">
+                    <span class="ml-2">{{ selectedSlot.a * 255 | number }}</span>
+                    <span class="ml-1"> / {{maxSliderLimits}}</span>
+                </div>
+            </div>
+            <div class="flex flex-row [&>*]:mx-2 justify-end">
+                <button type="button" (click)="increaseSliderLimits()"
+                    class="mt-2 px-4 py-2 transition-all bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">
+                    Overload
+                </button>
+
+                <button type="button" (click)="resetSliderLimits()"
+                    class="mt-2 px-4 py-2 transition-all bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">
+                    Reset Overload
+                </button>
+            </div>
+
+        </div>
+
+        <input
+            class="p-1 h-64 w-64 block bg-white border border-gray-200 cursor-pointer rounded-lg disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700"
+            type="color" [value]="slotToEdit" (input)="onColorChange($event)">
+    </div>

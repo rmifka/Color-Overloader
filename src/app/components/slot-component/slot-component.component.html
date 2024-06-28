@@ -1,0 +1,8 @@
+<div class="w-full bg-gray-900 rounded-lg hover:bg-gray-800 transition-all">
+    <button class="p-2 m-2 [&>*]:m-1 flex flex-row" (click)="emitClickEvent()">
+        <!-- Example placeholder for the first div -->
+        <div class="rounded-full p-3" [style.backgroundColor]="formatColor(colorScheme?.saberAColor)"></div>
+        <!-- Use the method for dynamically setting the color from colorScheme -->
+        <div class="rounded-full p-3" [style.backgroundColor]="formatColor(colorScheme?.saberBColor)"></div>
+    </button>
+</div>
