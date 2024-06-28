@@ -27,28 +27,28 @@
                     <span class="mr-2">R:</span>
                     <input class="w-[60rem]" type="range" min="0" [max]="maxSliderLimits" [value]="selectedSlot.r * 255"
                         (input)="onColorSliderChange($event,'red')">
-                    <span class="ml-2">{{ selectedSlot.r * 255 | number }}</span>
+                    <span class="ml-2">{{ selectedSlot.r * 255 | number:'1.0-0' }}</span>
                     <span class="ml-1"> / {{maxSliderLimits}}</span>
                 </div>
                 <div class="flex items-center">
                     <span class="mr-2">G:</span>
                     <input class="w-[60rem]" type="range" min="0" [max]="maxSliderLimits" [value]="selectedSlot.g * 255"
                         (input)="onColorSliderChange($event,'green')">
-                    <span class="ml-2">{{ selectedSlot.g * 255 | number }}</span>
+                    <span class="ml-2">{{ selectedSlot.g * 255 | number:'1.0-0' }}</span>
                     <span class="ml-1"> / {{maxSliderLimits}}</span>
                 </div>
                 <div class="flex items-center">
                     <span class="mr-2">B:</span>
                     <input class="w-[60rem]" type="range" min="0" [max]="maxSliderLimits" [value]="selectedSlot.b * 255"
                         (input)="onColorSliderChange($event,'blue')">
-                    <span class="ml-2">{{ selectedSlot.b * 255 | number }}</span>
+                    <span class="ml-2">{{ selectedSlot.b * 255 | number:'1.0-0' }}</span>
                     <span class="ml-1"> / {{maxSliderLimits}}</span>
                 </div>
                 <div class="flex items-center">
                     <span class="mr-2">A:</span>
                     <input class="w-[60rem]" type="range" min="0" [max]="maxSliderLimits" [value]="selectedSlot.a * 255"
                         (input)="onColorSliderChange($event,'alpha')">
-                    <span class="ml-2">{{ selectedSlot.a * 255 | number }}</span>
+                    <span class="ml-2">{{ selectedSlot.a * 255 | number:'1.0-0' }}</span>
                     <span class="ml-1"> / {{maxSliderLimits}}</span>
                 </div>
             </div>

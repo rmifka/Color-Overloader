@@ -83,12 +83,16 @@ export class ColorEditorComponent implements OnChanges {
 
   ngOnInit(): void {
     this.clickedColorEditSlot(this.colorScheme.saberAColor);
+    
   }
 
   clickedColorEditSlot(slot: Color | null): void {
     if (!slot) {
       return;
     }
+
+    const biggest = Math.max(slot.r * 255,slot.g * 255,slot.b* 255,slot.a* 255);
+    this.maxSliderLimits = 255 * (((255%biggest) / 255) + 1);
 
     this.selectedSlot = slot;
     this.slotToEdit = this.rgbToHex(slot);
