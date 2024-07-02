@@ -1,7 +1,7 @@
 <!-- app.component.html -->
 
 @if(colorSchemesSettings === null){
-    <div class="flex flex-col min-h-screen justify-center items-center text-center bg-gradient-to-r from-blue-400 via-pink-500 to-red-500 p-6">
+    <div class="flex flex-col min-h-screen justify-center items-center text-center background p-6">
         <h1 class="text-5xl font-extrabold mb-6 text-white drop-shadow-lg">Beat Saber Color Editor</h1>
         <p class="mb-10 text-lg text-gray-100">Customize your Beat Saber experience with "overloaded" saber colors.</p>
         <form class="w-full max-w-sm mx-auto">
@@ -20,7 +20,10 @@
     
 }
 @else {
-    <div class="flex flex-row min-h-screen justify-center items-center bg-gradient-to-r from-teal-400 via-blue-500 to-purple-600 p-8 text-white">
+    <div class=" flex flex-row min-h-screen justify-center items-center p-8 text-white" 
+    [style.background]="selectedSlot !== null ? 
+    'linear-gradient(to right, ' + rgbToHex(selectedSlot.saberAColor) + ', ' + rgbToHex(selectedSlot.saberBColor) + ')' : 
+    'default-background-style'">
         <div class="flex flex-col space-y-4">
           <app-slot-component (clickEvent)="updateSelectedSlot(0)"
                               [colorScheme]="colorSchemesSettings && colorSchemesSettings.colorSchemes[0]"></app-slot-component>
@@ -32,7 +35,7 @@
                               [colorScheme]="colorSchemesSettings && colorSchemesSettings.colorSchemes[3]"></app-slot-component>
       
           <a download="PlayerData.dat" type="button" (click)="exportClicked()"
-             class="mt-4 px-6 py-3 text-center bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 transition-all duration-300">
+             class="mt-4 px-6 py-3 text-center cursor-pointer bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 transition-all duration-300">
             Export
           </a>
         </div>

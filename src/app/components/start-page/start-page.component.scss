@@ -1,0 +1,13 @@
+@keyframes hueShift {
+    from {
+      filter: hue-rotate(0deg);
+    }
+    to {
+      filter: hue-rotate(360deg);
+    }
+  }
+  
+  .background {
+    animation: hueShift 10s ease-in-out infinite;
+    background: linear-gradient(to right, #0e9eff, #b926b4, #ff0000); /* Example gradient from blue to red */
+  }

@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
-import { ColorScheme, ColorSchemesSettings } from '../../model/color-schemes-settings.model';
+import { Color, ColorScheme, ColorSchemesSettings } from '../../model/color-schemes-settings.model';
 import { SlotComponentComponent } from '../slot-component/slot-component.component';
 import { ColorEditorComponent } from '../color-editor/color-editor.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-start-page',
   standalone: true,
-  imports: [SlotComponentComponent, ColorEditorComponent],
+  imports: [SlotComponentComponent, ColorEditorComponent,CommonModule],
   templateUrl: './start-page.component.html',
   styleUrl: './start-page.component.scss'
 })
@@ -16,7 +17,7 @@ export class StartPageComponent {
 
   entireData: any;
 
-  selectedSlot: ColorScheme | null = null;
+  public selectedSlot: ColorScheme | null = null;
 
   updateFileName(event: any): void {
     const file = event.target.files[0];
@@ -87,5 +88,15 @@ export class StartPageComponent {
     // Clean up: remove the <a> element and revoke the URL object to release memory
     document.body.removeChild(a);
     window.URL.revokeObjectURL(url);
+  }
+  //Code Duplication type shi
+  rgbToHex(color: Color): string {
+    const toHex = (c: number) => {
+      const hex = Math.round(Math.min(Math.max(c * 255, 0), 255)).toString(16);
+      return hex.length === 1 ? '0' + hex : hex;
+    };
+
+
+    return `#${toHex(color.r)}${toHex(color.g)}${toHex(color.b)}`;
   }
 }
