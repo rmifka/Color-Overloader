@@ -91,9 +91,9 @@ export class ColorEditorComponent implements OnChanges {
       return;
     }
 
-    const biggest = Math.max(slot.r * 255,slot.g * 255,slot.b* 255,slot.a* 255);
-    this.maxSliderLimits = 255 * (((255%biggest) / 255) + 1);
-
+    const biggest = Math.max(slot.r * 255,slot.g * 255,slot.b * 255,slot.a * 255);
+    this.maxSliderLimits = Math.max(Math.ceil(biggest / 255),1) * 255;
+    console.log(this.maxSliderLimits);
     this.selectedSlot = slot;
     this.slotToEdit = this.rgbToHex(slot);
   }
