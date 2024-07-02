@@ -1,41 +1,45 @@
 <!-- app.component.html -->
 
 @if(colorSchemesSettings === null){
-<div class="flex flex-col min-h-screen justify-center items-center text-center">
-    <form>
-        <label class="block mb-2 text-sm font-medium text-gray-300">Upload PlayerData.dat file</label>
-        <!-- Hidden file input -->
-        <input id="fileInput" type="file" class="hidden" (change)="updateFileName($event)" #fileInput>
-        <!-- Custom upload button -->
-        <button type="button" (click)="fileInput.click()"
-            class="mt-2 px-4 py-2 transition-all bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">
-            Choose File
-        </button>
-        <span id="fileName" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">{{ fileName }}</span>
-    </form>
-    <p>
-        If you don't know where your Player Data File is, press WINDOWS + R and enter the following path: <span class="text-red-500">%appdata%/../LocalLow/Hyperbolic Magnetism/Beat Saber</span>
-    </p>
-</div>
+    <div class="flex flex-col min-h-screen justify-center items-center text-center bg-gradient-to-r from-blue-400 via-pink-500 to-red-500 p-6">
+        <h1 class="text-5xl font-extrabold mb-6 text-white drop-shadow-lg">Beat Saber Color Editor</h1>
+        <p class="mb-10 text-lg text-gray-100">Customize your Beat Saber experience with "overloaded" saber colors.</p>
+        <form class="w-full max-w-sm mx-auto">
+            <label for="fileInput" class="block mb-4 text-md font-medium text-gray-200">Upload your PlayerData.dat file to get started</label>
+            <input id="fileInput" type="file" class="hidden" (change)="updateFileName($event)" #fileInput>
+            <button type="button" (click)="fileInput.click()"
+                    class="mt-2 px-6 py-3 w-full bg-white text-blue-600 font-bold rounded-full shadow-md hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 transition-all duration-300">
+                Choose File
+            </button>
+            <span id="fileName" class="block mt-4 text-sm font-medium text-gray-100">{{ fileName }}</span>
+        </form>
+        <p class="mt-10 text-gray-200">
+            Don't know where your Player Data File is? Press <kbd class="bg-gray-800 p-1 rounded">WINDOWS + R</kbd> and enter the following path: <span class="bg-gray-800 p-1 rounded">%appdata%/../LocalLow/Hyperbolic Magnetism/Beat Saber</span>
+        </p>
+    </div>
+    
 }
 @else {
-<div class="flex flex-row min-h-screen justify-center items-center">
-    <div class="flex flex-col">
-        <app-slot-component (clickEvent)="updateSelectedSlot(0)"
-            [colorScheme]="colorSchemesSettings && colorSchemesSettings.colorSchemes[0]"></app-slot-component>
-        <app-slot-component (clickEvent)="updateSelectedSlot(1)"
-            [colorScheme]="colorSchemesSettings && colorSchemesSettings.colorSchemes[1]"></app-slot-component>
-        <app-slot-component (clickEvent)="updateSelectedSlot(2)"
-            [colorScheme]="colorSchemesSettings && colorSchemesSettings.colorSchemes[2]"></app-slot-component>
-        <app-slot-component (clickEvent)="updateSelectedSlot(3)"
-            [colorScheme]="colorSchemesSettings && colorSchemesSettings.colorSchemes[3]"></app-slot-component>
-
-        <a download="PlayerData.dat" type="button" (click)="exportClicked()"
-            class="mt-2 px-4 py-2 text-center transition-all bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">
+    <div class="flex flex-row min-h-screen justify-center items-center bg-gradient-to-r from-teal-400 via-blue-500 to-purple-600 p-8 text-white">
+        <div class="flex flex-col space-y-4">
+          <app-slot-component (clickEvent)="updateSelectedSlot(0)"
+                              [colorScheme]="colorSchemesSettings && colorSchemesSettings.colorSchemes[0]"></app-slot-component>
+          <app-slot-component (clickEvent)="updateSelectedSlot(1)"
+                              [colorScheme]="colorSchemesSettings && colorSchemesSettings.colorSchemes[1]"></app-slot-component>
+          <app-slot-component (clickEvent)="updateSelectedSlot(2)"
+                              [colorScheme]="colorSchemesSettings && colorSchemesSettings.colorSchemes[2]"></app-slot-component>
+          <app-slot-component (clickEvent)="updateSelectedSlot(3)"
+                              [colorScheme]="colorSchemesSettings && colorSchemesSettings.colorSchemes[3]"></app-slot-component>
+      
+          <a download="PlayerData.dat" type="button" (click)="exportClicked()"
+             class="mt-4 px-6 py-3 text-center bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 transition-all duration-300">
             Export
-        </a>
-    </div>
-    <app-color-editor
-        [colorScheme]="selectedSlot !== null ? selectedSlot : colorSchemesSettings.colorSchemes[0]"></app-color-editor>
-</div>
+          </a>
+        </div>
+        <div class="flex flex-col ml-8 p-6 bg-white bg-opacity-10 rounded-lg shadow-lg">
+          <app-color-editor class="pt-6"
+            [colorScheme]="selectedSlot !== null ? selectedSlot : colorSchemesSettings.colorSchemes[0]"></app-color-editor>
+        </div>
+      </div>
+      
 }
