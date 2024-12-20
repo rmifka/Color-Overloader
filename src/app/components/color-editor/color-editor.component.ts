@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, Output, SimpleChanges, ViewChild} from '@angular/core';
 import { Color, ColorScheme, multiplyColor } from '../../model/color-schemes-settings.model';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -11,7 +11,7 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './color-editor.component.scss'
 })
 export class ColorEditorComponent implements OnChanges {
-  
+
   @Input() colorScheme: ColorScheme;
   slotToEdit: string = '';
   selectedSlot: Color = { r: 255, g: 0, b: 0, a: 1 };
@@ -31,6 +31,8 @@ export class ColorEditorComponent implements OnChanges {
   }
 
   maxSliderLimits = 255;
+  @Output() exportClicked : EventEmitter<void> = new EventEmitter<void>();
+
 
   increaseSliderLimits() {
     this.maxSliderLimits += 255;
@@ -83,7 +85,7 @@ export class ColorEditorComponent implements OnChanges {
 
   ngOnInit(): void {
     this.clickedColorEditSlot(this.colorScheme.saberAColor);
-    
+
   }
 
   clickedColorEditSlot(slot: Color | null): void {
@@ -145,5 +147,8 @@ export class ColorEditorComponent implements OnChanges {
     return `#${toHex(color.r)}${toHex(color.g)}${toHex(color.b)}`;
   }
 
+  outputExport(){
+    this.exportClicked.emit()
+  }
 
 }

@@ -1,52 +1,58 @@
 /* Custom Slider Styles */
 input[type="range"] {
-    -webkit-appearance: none; /* Override default appearance */
-    background: transparent; /* Remove default background */
-    
-    /* Track styles */
-    &::-webkit-slider-runnable-track {
-      height: 8px;
-      background: #333; /* Light grey background */
-      border-radius: 4px; /* Rounded corners */
-    }
-    
-    &::-moz-range-track {
-      height: 8px;
-      background: #333; /* Light grey background */
-      border-radius: 4px; /* Rounded corners */
-    }
-    
-    /* Thumb styles */
+  -webkit-appearance: none; /* Override default appearance */
+  background: transparent; /* Remove default background */
+
+  /* Track styles */
+  &::-webkit-slider-runnable-track {
+    height: 8px;
+    background: #444; /* Dark grey background */
+    border-radius: 2px; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+  }
+
+  &::-moz-range-track {
+    height: 8px;
+    background: #444; /* Dark grey background */
+    border-radius: 2px; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+  }
+
+  /* Thumb styles */
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Remove default styles */
+    border: none; /* Remove default border */
+    height: 16px; /* Large height for the thumb */
+    width: 16px; /* Large width for the thumb */
+    border-radius: 50%; /* Circular shape */
+    background: #e4e4e4; /* Bright blue background */
+    margin-top: -4px; /* Align with the track */
+    cursor: pointer; /* Cursor on hover */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    transition: background 0.3s ease; /* Smooth transition for background */
+  }
+
+  &::-moz-range-thumb {
+    border: none; /* Remove default border */
+    height: 16px; /* Large height for the thumb */
+    width: 16px; /* Large width for the thumb */
+    border-radius: 20%; /* Circular shape */
+    background: #ededed; /* Bright blue background */
+    cursor: pointer; /* Cursor on hover */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    transition: background 0.3s ease; /* Smooth transition for background */
+  }
+
+  /* Focus styles */
+  &:focus {
+    outline: none; /* Remove default focus outline */
+
     &::-webkit-slider-thumb {
-      -webkit-appearance: none; /* Remove default styles */
-      border: none; /* Remove default border */
-      height: 16px; /* Large height for the thumb */
-      width: 16px; /* Large width for the thumb */
-      border-radius: 50%; /* Circular shape */
-      background: #007bff; /* Blue background */
-      margin-top: -4px; /* Align with the track */
-      cursor: pointer; /* Cursor on hover */
+      background: #cfcfcf; /* Darker blue background for focus */
     }
-    
+
     &::-moz-range-thumb {
-      border: none; /* Remove default border */
-      height: 24px; /* Large height for the thumb */
-      width: 24px; /* Large width for the thumb */
-      border-radius: 50%; /* Circular shape */
-      background: #007bff; /* Blue background */
-      cursor: pointer; /* Cursor on hover */
-    }
-    
-    /* Focus styles */
-    &:focus {
-      outline: none; /* Remove default focus outline */
-      
-      &::-webkit-slider-thumb {
-        background: #0056b3; /* Darker blue background for focus */
-      }
-      
-      &::-moz-range-thumb {
-        background: #0056b3; /* Darker blue background for focus */
-      }
+      background: #afafaf; /* Darker blue background for focus */
     }
   }
+}
